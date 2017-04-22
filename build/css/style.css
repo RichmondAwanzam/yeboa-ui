@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=latin-ext,vietnamese");
+/* line 2, ../sass/style.scss */
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* line 3, ../sass/style.scss */
+h4 {
+  font-weight: 600;
+}
+
+/* line 6, ../sass/style.scss */
+p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* line 10, ../sass/style.scss */
+.price {
+  font-size: 30px;
+  margin: 0 auto;
+  color: #333;
+}
+
+/* line 16, ../sass/style.scss */
+.thumbnail {
+  opacity: 0.70;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/* line 21, ../sass/style.scss */
+.thumbnail:hover {
+  opacity: 1.00;
+  box-shadow: 0px 0px 10px #4bc6ff;
+}
+
+/* line 25, ../sass/style.scss */
+.line {
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 770px) {
+  /* line 29, ../sass/style.scss */
+  .right {
+    float: left;
+    width: 100%;
+  }
+}
+/* line 34, ../sass/style.scss */
+span.thumbnail {
+  border: 1px solid #00c4ff !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.16);
+  padding: 10px;
+}
+
+/* line 42, ../sass/style.scss */
+.container h4 {
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+/* line 43, ../sass/style.scss */
+button {
+  margin-top: 6px;
+}
+
+/* line 45, ../sass/style.scss */
+.right {
+  float: right;
+  border-bottom: 2px solid #0a5971;
+}
+
+/* line 49, ../sass/style.scss */
+.btn-info {
+  color: #fff;
+  background-color: #19b4e2;
+  border-color: #19b4e2;
+  font-size: 13px;
+  font-weight: 600;
+}
+/* move this to variable css ../sass/style.sss*/
+/* for patient page patient banner*/
+.user-card {
+    background: #1d1e1f none repeat scroll 0 0;
+    height: 270px;
+    margin-bottom: 40px;
+    padding-top: 110px;
+}
+.g-cont {
+    padding: 0;
+}
+.g-row {
+    margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
+}
+.g-col {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    width: 100%;
+}
+.user-card__title {
+    color: #d6d6d6;
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.38889;
+    margin-bottom: 27px;
+}
+.sm-1\/4 {
+    width: 25%;
+}
+.xs-1\/2 {
+    width: 50%;
+}
+.user-stats__label.active {
+    border-bottom: 1px solid #9a5b45;
+}
+.user-stats__label {
+    border-bottom: 1px solid #363738;
+    color: #808182;
+    display: block;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+.user-stats__value {
+    font-size: 1.5rem;
+}
