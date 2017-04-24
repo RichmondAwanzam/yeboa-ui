@@ -77,7 +77,7 @@ class IndexPage extends React.Component {
           <div className="start-compaign-container">
             <Link to="new-campaign" className="btn btn-primary">Start Patient Campaign</Link>
           </div>
-          <MuiThemeProvider className="material-class">
+          
             <Tabs value={this.state.value} onChange={this.handleChange} className="material-class" >
               <Tab label="Featured Patients" value="a">
                 <div className="row">
@@ -98,7 +98,7 @@ class IndexPage extends React.Component {
 
               </Tab>
             </Tabs>
-          </MuiThemeProvider>
+    
 
         </div>
       </div>

@@ -136,10 +136,16 @@ span.thumbnail {
 .user-stats__value {
     font-size: 1.5rem;
 }
+.comments-container{
+    padding: 20px 0;
+    width: 85%;
+    margin: 0 auto;
+}
 .text-content-area{
   width: auto;
-  height: 800px;
-  margin: 0 10px;
+ 
+  margin: 0 ;
+
   box-shadow: 0.5px 1px 1px 1px #ccc;
 }
 
@@ -433,6 +439,14 @@ background: #fd3344 none repeat scroll 0 0;
 }
 .material-class > div:nth-child(2){
   width: 60% !important;
+  margin: 0 auto !important;
+}
+.patient-material-class > div:first-child{
+  width: 85% !important;
+  margin: 0 auto !important;
+}
+.patient-material-class > div:nth-child(2){
+  width: 85% !important;
   margin: 0 auto !important;
 }
 .padding-20{
