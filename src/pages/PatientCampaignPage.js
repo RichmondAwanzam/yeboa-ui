@@ -3,7 +3,7 @@ import React from 'react';
 import {Field,reduxForm} from 'redux-form';
 import {createPatientCampaign}  from '../actions/PatientsActions';
 import {connect} from 'react-redux';
-
+import WizardForm from '../widgets/form-wizard';
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div className="form-row">
     <label>
@@ -35,20 +35,8 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   render() {
     const {fields :{title,name,desc},handleSubmit}= this.props;
     return (<div>
-      <form className="form-labels-on-top" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-      <div className="form-title-row">
-                <h1>New Patient Campaign</h1>
-            </div>
-        <Field name="title" type="text" component={renderField} label="Campaign Title"/>
-        <Field name="name" type="text" component={renderField} label="Patient Name"/>
-        <Field name="email" type="text" component={renderField} label="Email"/>
-        <Field name="confirm-email" type="text" component={renderField} label="Confirm Email"/>
-        <Field name="desc" type="textarea" component={renderField} label="Campaign Description"/>
-        <Field name="images" type="file" component={renderField} label="Pictures"/>
-        <div className="form-group">
-          <button  className="btn btn-primary" type="submit">Submit</button>
-        </div>
-      </form>
+      <WizardForm onSubmit={handleSubmit(this.onSubmit.bind(this))}/>
+     
       </div>);
   }
 }

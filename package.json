@@ -27,10 +27,13 @@
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.17.2",
     "normalizr": "^3.2.2",
+    "pui-react-dropdowns": "^8.0.5",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.31.0",
     "react-bootstrap-carousel": "^1.0.4",
     "react-document-title": "^2.0.2",
     "react-dom": "^15.4.2",
+    "react-droppie": "^1.1.4",
     "react-grid-gallery": "^0.3.3",
     "react-images": "^0.5.2",
     "react-redux": "^5.0.3",
@@ -45,6 +48,7 @@
     "webpack": "^2.2.1"
   },
   "devDependencies": {
+    "svg-react-loader": "^0.3.7",
     "url-loader": "^0.5.8",
     "webpack-dev-middleware": "^1.10.1"
   }

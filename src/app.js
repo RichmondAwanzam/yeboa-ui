@@ -23,7 +23,7 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
      <MuiThemeProvider >
-    <Router history={browserHistory} routes={routes}/>
+      <Router history={browserHistory} routes={routes}/>
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('app-container')
