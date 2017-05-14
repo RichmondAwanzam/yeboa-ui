@@ -51,10 +51,11 @@ export function createPatientCampaign(data){
   let formData = new FormData();
          formData.append('name', data.name);
           formData.append('title', data.title);
-          formData.append('email',data.email);
+          formData.append('diagnosis',data.diagnosis);
+          formData.append('condition',data.condition);
           formData.append('description',data.desc);
          formData.append('campaign_pic', data.images[0]);
-
+         console.log("network caall ::: i will make call");
          return fetch(getCreateCampaignUrl(),{headers: new Headers({
 
      		                                        'Accept': 'application/json'

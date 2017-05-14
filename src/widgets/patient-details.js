@@ -14,11 +14,11 @@ const PatientDetailsForm = (props) => {
         <Field name="amount" type="text" component={renderField} label="Amount Needed"/>
         <Field name="title" type="text" component={renderField} label="Campaign Title"/>
         <Field name="name" type="text" component={renderField} label="Patient Name"/>
-        <Field name="email" type="text" component={renderField} label="Email"/>
-        <Field name="confirmemail" type="text" component={renderField} label="Confirm Email"/>
+      
         <Field name="desc" type="textarea" component={renderField} label="Campaign Description"/>
        <div>
-        <button type="submit" className="next">Next</button>
+        <button type="submit" className="next pull-right">Next</button>
+        <div className="clearfix"/>
       </div>
     </form>
   ) 

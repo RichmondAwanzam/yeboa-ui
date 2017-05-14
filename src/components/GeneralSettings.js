@@ -8,7 +8,7 @@ export default class GeneralSettings extends Component {
                 <div className="row">
                 <div className="col-md-3">
                     <div className="settings-info-box bg-grey">
-                        <div className="count">20</div>
+                         <div className="count">20</div>
                         <div className="title">Following Campaigns</div>
                     </div>
                 </div>
