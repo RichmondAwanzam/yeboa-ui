@@ -54,6 +54,7 @@ export function createPatientCampaign(data){
           formData.append('diagnosis',data.diagnosis);
           formData.append('condition',data.condition);
           formData.append('description',data.desc);
+           formData.append('amount',data.amount);
          formData.append('campaign_pic', data.images[0]);
          console.log("network caall ::: i will make call");
          return fetch(getCreateCampaignUrl(),{headers: new Headers({
@@ -61,7 +62,10 @@ export function createPatientCampaign(data){
      		                                        'Accept': 'application/json'
      	                                     }),
                                            method:'post',body:formData
-           });
+           }).then(response=>response.json())
+           .then(json=>{
+             
+           })
 }
 
 export function fetchPatients() {

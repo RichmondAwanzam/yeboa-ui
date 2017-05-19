@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { CLIENT_ID } from '../constants/Config';
 import {  IMAGE_SIZES } from '../constants/PatientsConstants';
-const API_URL='http://localhost:8888/yeboa/api/patients'
+const API_URL='http://localhost:8888/yeboa/api/'
 
 
 export function constructUrl(cat) {
@@ -18,7 +18,7 @@ export function constructPatientConditionsUrl(patientId) {
 }
 
 export function getCreateCampaignUrl() {
-  return `${API_URL}/campaign?client_id=${CLIENT_ID}`;
+  return `${API_URL}campaign/campaign?client_id=${CLIENT_ID}`;
 }
 
 export function constructPatientUrl(patientId) {
