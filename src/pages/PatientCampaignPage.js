@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {Field,reduxForm} from 'redux-form';
-import {createPatientCampaign}  from '../actions/PatientsActions';
+import {createPatientCampaign}  from '../actions/campaignsActions';
 import {connect} from 'react-redux';
 import WizardForm from '../widgets/form-wizard';
 

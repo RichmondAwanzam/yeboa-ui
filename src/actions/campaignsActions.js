@@ -3,32 +3,17 @@ import {push} from 'react-router-redux';
 import * as types from '../constants/ActionTypes';
 
 import { patientSchema } from '../constants/Schemas';
-import {constructPatientUrl,constructPatientConditionsUrl,getCreateCampaignUrl} from '../utils/PatientUtils';
+import {constructCampaignUrl,constructPatientConditionsUrl,getCreateCampaignUrl} from '../utils/PatientUtils';
 
-function fetchRelatedPatients(userId, patientQuery) {
-  return dispatch =>
-    fetch(constructUserSongsUrl(userId))
-      .then(response => response.json())
-      .then(json => {
-        const patients = json.filter(patients => patientQuery !== patient.query);
-        const normalized = normalize(patients, arrayOf(patientSchema));
-        dispatch(receiveSongs(
-          normalized.entities,
-          normalized.result,
-          patientQuery,
-          null
-        ));
-      })
-      .catch(err => { throw err; });
-}
+
 
 export function createPatientCampaign(data){
     return dispatch => {let formData = new FormData();
          formData.append('name', data.name);
           formData.append('title', data.title);
-          formData.append('diagnosis',data.diagnosis);
-          formData.append('condition',data.condition);
-          formData.append('description',data.desc);
+          formData.append('diagnosis',data.diagnosis ||"");
+          formData.append('condition',data.condition ||"");
+          formData.append('description',data.desc ||"");
            formData.append('amount',data.amount);
          formData.append('campaign_pic', data.images[0]);
          return fetch(getCreateCampaignUrl(),{headers: new Headers({
@@ -46,8 +31,8 @@ export function createPatientCampaign(data){
 
 export function fetchCampaigns(campaignId) {
   return dispatch => {
-    dispatch(requestPatients());
-    return fetch(constructPatientUrl(campaignId),{headers: new Headers({
+    dispatch(requestCampaigns());
+    return fetch(constructCampaignUrl(campaignId),{headers: new Headers({
 		                                        'Accept': 'application/json'
 	                                     })
       })
@@ -55,8 +40,7 @@ export function fetchCampaigns(campaignId) {
       .then(json => {
         const normalized = normalize(json, patientSchema);
         console.log(json);
-        dispatch(receivePatients(json));
-        //dispatch(receiveSongPre(songId, normalized.entities));
+        dispatch(receiveCampaigns(json));
       })
       .catch(err => { throw err; });
   };
@@ -65,45 +49,34 @@ export function fetchCampaigns(campaignId) {
 
 
 
-export function receivePatient(patient) {
+export function receiveCampaign(campaign) {
   return {
     type: types.RECEIVE_PATIENT,
-    patient,
+    campaign,
   };
 }
 
-export function receivePatients( patients) {
+export function receiveCampaigns( campaigns) {
   return {
     type: types.RECEIVE_PATIENTS,
 
-    patients,
-  };
-}
-
-function receivePatientsConditions(patientId, conditions) {
-  return {
-    type: types.RECEIVE_PATIENT_CONDITIONS,
-    entities: {
-      patients: {
-        [patientId]: {
-          conditions,
-        },
-      },
-    },
+    campaigns,
   };
 }
 
 
-function requestPatient(patientId) {
+
+
+function requestCampaign(patientId) {
   return {
-    type: types.REQUEST_PATIENT,
+    type: types.REQUEST_CAMPAIGN,
     patientId,
   };
 }
 
-function requestPatients() {
+function requestCampaigns() {
   return {
-    type: types.REQUEST_PATIENTS,
+    type: types.REQUEST_CAMPAIGNS
 
   };
 }

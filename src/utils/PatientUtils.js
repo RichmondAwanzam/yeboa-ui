@@ -13,15 +13,12 @@ export function constructUrl(cat) {
   return result;
 }
 
-export function constructPatientConditionsUrl(patientId) {
-  return `${API_URL}/${patientId}/conditions?client_id=${CLIENT_ID}`;
-}
 
 export function getCreateCampaignUrl() {
   return `${API_URL}campaign/campaign?client_id=${CLIENT_ID}`;
 }
 
-export function constructPatientUrl(patientId) {
+export function constructCampaignUrl(patientId) {
   if (patientId) {
     return `${API_URL}campaign/${patientId}?client_id=${CLIENT_ID}`;
   }else{
@@ -30,16 +27,8 @@ export function constructPatientUrl(patientId) {
 
 }
 
-export function constructPatientHelpersUrl(patientId) {
-  return `//api.soundcloud.com/users/${userId}/tracks?client_id=${CLIENT_ID}`;
-}
 
-export function fetchWaveformData(waveformUrl) {
-  return fetch(waveformUrl)
-    .then(response => response.json())
-    .then(json => json.samples)
-    .catch(err => { throw err; });
-}
+
 
 export function getImageUrl(s, size = null) {
   let str = s;

@@ -7,7 +7,7 @@ class PatientsView extends Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(fetchPatients());
+    dispatch(fetchCampaigns());
   }
   renderDOMPatients() {
     const { items } = this.props;
