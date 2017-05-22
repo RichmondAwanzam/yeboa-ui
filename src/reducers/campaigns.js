@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 
 const initialState = {
   isFetching: false,
-  campaign:null,
+  campaign:{},
   campaigns: []
 };
 
@@ -19,6 +19,13 @@ export default function patients(state = initialState, action) {
 
         return {...state, campaigns: action.campaigns =[]};
 
+ case types.RECEIVE_CAMPAIGN:
+
+      return {...state, campaign: action.campaign};
+
+    case types.REQUEST_CAMPAIGN:
+
+        return {...state, campaign: action.campaign ={}};
 
 
     default:

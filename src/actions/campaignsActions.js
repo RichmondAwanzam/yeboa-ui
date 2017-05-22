@@ -31,7 +31,11 @@ export function createPatientCampaign(data){
 
 export function fetchCampaigns(campaignId) {
   return dispatch => {
+      if(campaignId){
+          dispatch(receiveCampaign())
+        }else{
     dispatch(requestCampaigns());
+        }
     return fetch(constructCampaignUrl(campaignId),{headers: new Headers({
 		                                        'Accept': 'application/json'
 	                                     })
@@ -40,7 +44,11 @@ export function fetchCampaigns(campaignId) {
       .then(json => {
         const normalized = normalize(json, patientSchema);
         console.log(json);
+        if(campaignId){
+          dispatch(receiveCampaign(json))
+        }else{
         dispatch(receiveCampaigns(json));
+        }
       })
       .catch(err => { throw err; });
   };
