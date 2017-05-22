@@ -5,6 +5,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import CommentView from '../widgets/comment';
 import Gallery from 'react-grid-gallery';
+import {fetchPatients} from '../actions/campaignsActions';
+import {connect} from 'react-redux';
 const IMAGES =
   [{
     src: "https://www.jetmag.com/wp-content/uploads/2016/01/hospital.jpg",
@@ -30,16 +32,24 @@ const IMAGES =
     thumbnailHeight: 212
   }]
 
-export default class PatientPage extends React.Component {
+ class PatientPage extends React.Component {
   constructor(props) {
     super(props);
+
+  }
+  componentWillMount(){
+      console.log(this.props.params);
+    const {campaignId} =this.props.params;
+  
+    const {dispatch} = this.props;
+    dispatch(fetchPatients(campaignId));
 
   }
   render() {
     return (<div>
       <article className="user-card"><div className="g-row g-cont">
         <div className="g-col">
-          <h1 className="user-card__title">Patient Name</h1>
+          <h1 className="user-card__title">{this.props.patient.title}</h1>
           <Link to="donate" className="btn btn-primary pull-right">Donate</Link>
         </div></div>
 
@@ -150,3 +160,11 @@ export default class PatientPage extends React.Component {
     </div>);
   }
 }
+function mapStateToProps(state) {
+  const {patients } = state;
+
+  return {
+   patients
+  };
+}
+export default connect(mapStateToProps)(PatientPage);

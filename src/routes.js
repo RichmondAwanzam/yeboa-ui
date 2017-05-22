@@ -10,7 +10,7 @@ export default (
       <IndexRoute component={IndexPage} />
       <LoginRoute path='/login' component={LoginPage} />
       <Route path='/register' component={RegistrationPage} />
-      <Route path='/patients/:patientId' component={PatientPage} />
+      <Route path='/campaigns/:campaignId' component={PatientPage} />
       <Route path='/new-campaign' component={PatientCampaignPage} />
       <Route path='/donate' component={DonatePage} />
       <Route path='/confirm' component={ConfirmationPage} />

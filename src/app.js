@@ -11,15 +11,17 @@ import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import configureStore from './store/configureStore';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+import {syncHistoryWithStore} from 'react-router-redux';
 
 injectTapEventPlugin();
 ReactStormpath.init();
 
 
 
-const store = configureStore();
 
+
+const store = configureStore();
+const history=syncHistoryWithStore(browserHistory,store);
 ReactDOM.render(
   <Provider store={store}>
      <MuiThemeProvider >

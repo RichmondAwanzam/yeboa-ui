@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import HelpeeCardView from '../widgets/helpee/helpee-card-view';
-import { fetchPatients } from '../actions/PatientsActions';
+import { fetchCampaigns } from '../actions/campaignsActions';
 
 class PatientsView extends Component {
 
@@ -15,7 +15,7 @@ class PatientsView extends Component {
     if (items.length > 0) {
       return items.map(item => {
         return (
-          <HelpeeCardView key={item.id} patient={item} />);
+          <HelpeeCardView key={item.id} campaign={item} />);
 
       });
     } else {
@@ -39,8 +39,8 @@ class PatientsView extends Component {
 
 
 function mapStateToProps(state) {
-  const { patients } = state;
-  const { items } = patients;
+  const { campaigns } = state;
+  const { items } = campaigns;
   console.log("finally");
   console.log(items);
   return {

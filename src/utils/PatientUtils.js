@@ -23,9 +23,9 @@ export function getCreateCampaignUrl() {
 
 export function constructPatientUrl(patientId) {
   if (patientId) {
-    return `${API_URL}/${patientId}?client_id=${CLIENT_ID}`;
+    return `${API_URL}campaign/${patientId}?client_id=${CLIENT_ID}`;
   }else{
-    return `${API_URL}/?client_id=${CLIENT_ID}`;
+    return `${API_URL}campaign/?client_id=${CLIENT_ID}`;
   }
 
 }

@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
-import patients from './patients';
+import campaigns from './campaigns';
 import environment from './environment';
 import navigator from './navigator';
 import authed from './authed';
 import { reducer as formReducer } from 'redux-form';
+import { routerReducer} from 'react-router-redux'
 const rootReducer = combineReducers({
   environment,
   navigator,
-  patients,
+  campaigns,
   authed,
-  form:formReducer
+  form:formReducer,
+  routing: routerReducer
 });
 
 export default rootReducer;

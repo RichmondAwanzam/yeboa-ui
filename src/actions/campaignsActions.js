@@ -1,5 +1,5 @@
 import { arrayOf, normalize } from 'normalizr';
-
+import {push} from 'react-router-redux';
 import * as types from '../constants/ActionTypes';
 
 import { patientSchema } from '../constants/Schemas';
@@ -22,33 +22,8 @@ function fetchRelatedPatients(userId, patientQuery) {
       .catch(err => { throw err; });
 }
 
-
-
-
-export function receivePatients( patients) {
-  return {
-    type: types.RECEIVE_PATIENTS,
-
-    patients,
-  };
-}
-
-
-function fetchPatient(patientId) {
-  return dispatch => {
-    dispatch(requestPatient(patientId));
-    return fetch(constructPatientUrl(patientId))
-      .then(response => response.json())
-      .then(json => {
-        const normalized = normalize(json, patientSchema);
-        dispatch(receiveSongPre(songId, normalized.entities));
-      })
-      .catch(err => { throw err; });
-  };
-}
-
 export function createPatientCampaign(data){
-  let formData = new FormData();
+    return dispatch => {let formData = new FormData();
          formData.append('name', data.name);
           formData.append('title', data.title);
           formData.append('diagnosis',data.diagnosis);
@@ -56,7 +31,6 @@ export function createPatientCampaign(data){
           formData.append('description',data.desc);
            formData.append('amount',data.amount);
          formData.append('campaign_pic', data.images[0]);
-         console.log("network caall ::: i will make call");
          return fetch(getCreateCampaignUrl(),{headers: new Headers({
 
      		                                        'Accept': 'application/json'
@@ -64,19 +38,16 @@ export function createPatientCampaign(data){
                                            method:'post',body:formData
            }).then(response=>response.json())
            .then(json=>{
-             
+             console.log("i will change route");
+             dispatch(push("/patients/2"));
            })
+    }
 }
 
-export function fetchPatients() {
-  console.log("i will fetch patients");
-
-
-
-
+export function fetchCampaigns(campaignId) {
   return dispatch => {
     dispatch(requestPatients());
-    return fetch(constructPatientUrl(),{headers: new Headers({
+    return fetch(constructPatientUrl(campaignId),{headers: new Headers({
 		                                        'Accept': 'application/json'
 	                                     })
       })
@@ -91,25 +62,21 @@ export function fetchPatients() {
   };
 }
 
-function fetchPatientsConditions(patientId) {
-  return dispatch =>
-    fetch(constructSongCommentsUrl(patientId))
-      .then(response => response.json())
-      .then(json => dispatch(receivePatientsConditions(patientId, json)))
-      .catch(err => { throw err; });
-}
 
-function fetchPatientData(patientId, userId, patientCondition) {
-  return dispatch => {
-    dispatch(fetchRelatedSongs(userId, patientCondition));
-    dispatch(fetchPatientsConditions(patientId));
+
+
+export function receivePatient(patient) {
+  return {
+    type: types.RECEIVE_PATIENT,
+    patient,
   };
 }
 
-export function receivePatient(entities) {
+export function receivePatients( patients) {
   return {
-    type: types.RECEIVE_PATIENT,
-    entities,
+    type: types.RECEIVE_PATIENTS,
+
+    patients,
   };
 }
 
@@ -126,15 +93,6 @@ function receivePatientsConditions(patientId, conditions) {
   };
 }
 
-function receivePatientsPre(patientId, entities) {
-  return dispatch => {
-    const patientName = entities.patients[patientId].name;
-    const userId = entities.patients[patientId].user_id;
-    dispatch(receivePatient(entities));
-    dispatch(receivePatients(entities, [songId], patientName, null));
-    dispatch(fetchPatientData(patientId, userId, patientName));
-  };
-}
 
 function requestPatient(patientId) {
   return {

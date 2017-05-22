@@ -7,7 +7,7 @@ import PatientsView from '../components/PatientViews';
 class FeaturedPatientsContainer extends Component {
 
   componentWillMount(){
-    const{ authed, patients,height } = this.props;
+    const{ authed, campaigns,height } = this.props;
   }
 
   renderFeaturedPatients(){
@@ -25,13 +25,13 @@ return(
 
 
 function mapStateToProps(state) {
-  const { dispatch,authed, patients ,environment} = state;
+  const { dispatch,authed, campaigns ,environment} = state;
 
   const { height } = environment;
   return {
     authed,
     height,
-    patients
+    campaigns
   };
 }
 

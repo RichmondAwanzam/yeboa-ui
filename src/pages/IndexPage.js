@@ -108,7 +108,7 @@ class IndexPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { authed, environment, navigator, patients } = state;
+  const { authed, environment, navigator, campaigns } = state;
   const { height } = environment;
 
   const { query } = navigator.route;
@@ -117,7 +117,7 @@ function mapStateToProps(state) {
   return {
     authed,
     height,
-    patients
+    campaigns
   };
 }
 export default connect(mapStateToProps)(IndexPage)
