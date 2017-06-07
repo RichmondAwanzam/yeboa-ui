@@ -46,6 +46,9 @@ module.exports = {
       query: {
         limit: 10000,
       },
-    }]
+    }, {
+        test: /\.css$/,
+        loader: [ 'style-loader', 'css-loader' ]
+      }]
   }
 };

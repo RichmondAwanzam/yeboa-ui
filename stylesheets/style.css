@@ -486,3 +486,10 @@ background: #fd3344 none repeat scroll 0 0;
 .bg-grey{
     background: #ccc;
 }
+.tile-viewport , .tile-viewport img {
+    height: 130px !important;
+    width: 125px !important;
+}
+.tile-viewport img {
+    margin-left: 0 !important;
+}

@@ -7,7 +7,7 @@ const initialState = {
   campaigns: []
 };
 
-export default function patients(state = initialState, action) {
+export default function patientCampaigns(state = initialState, action) {
   switch (action.type) {
 
 

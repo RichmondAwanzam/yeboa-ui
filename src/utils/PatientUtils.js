@@ -18,16 +18,24 @@ export function getCreateCampaignUrl() {
   return `${API_URL}campaign/campaign?client_id=${CLIENT_ID}`;
 }
 
-export function constructCampaignUrl(patientId) {
-  if (patientId) {
-    return `${API_URL}campaign/${patientId}?client_id=${CLIENT_ID}`;
+export function constructCampaignUrl(campaignId) {
+  if (campaignId) {
+    return `${API_URL}campaign/${campaignId}?client_id=${CLIENT_ID}`;
   }else{
     return `${API_URL}campaign/?client_id=${CLIENT_ID}`;
   }
 
 }
 
+export function constructCampaignMediasUrl(campaignId) {
+ 
+    return `${API_URL}campaign/${campaignId}/medias?client_id=${CLIENT_ID}`;
 
+
+}
+export function constructCampaignCommentsUrl(campaignId,userId,type) {
+    return `${API_URL}comment/${campaignId}/${userId}?type=${type}&client_id=${CLIENT_ID}`;
+}
 
 
 export function getImageUrl(s, size = null) {

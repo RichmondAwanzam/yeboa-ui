@@ -14,7 +14,6 @@ const PatientDetailsForm = (props) => {
         <Field name="amount" type="text" component={renderField} label="Amount Needed"/>
         <Field name="title" type="text" component={renderField} label="Campaign Title"/>
         <Field name="name" type="text" component={renderField} label="Patient Name"/>
-      
         <Field name="desc" type="textarea" component={renderField} label="Campaign Description"/>
        <div>
         <button type="submit" className="next pull-right">Next</button>

@@ -10,10 +10,10 @@ class PatientsView extends Component {
     dispatch(fetchCampaigns());
   }
   renderDOMPatients() {
-    const { items } = this.props;
+    const { campaigns } = this.props;
 
-    if (items.length > 0) {
-      return items.map(item => {
+    if (campaigns.length > 0) {
+      return campaigns.map(item => {
         return (
           <HelpeeCardView key={item.id} campaign={item} />);
 
@@ -39,13 +39,12 @@ class PatientsView extends Component {
 
 
 function mapStateToProps(state) {
-  const { campaigns } = state;
-  const { items } = campaigns;
-  console.log("finally");
-  console.log(items);
+  const { patientCampaigns } = state;
+  const { campaigns } = patientCampaigns;
+  console.log(campaigns);
   return {
 
-    items
+    campaigns
   };
 }
 

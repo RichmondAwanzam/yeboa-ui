@@ -1,4 +1,4 @@
-import { MasterPage, LoginPage, RegistrationPage, ProfilePage,PatientPage,PatientCampaignPage ,DonatePage ,ConfirmationPage,AccountSettingsPage } from './pages';
+import {PatientPageBackUp, MasterPage, LoginPage, RegistrationPage, ProfilePage,PatientPage,PatientCampaignPage ,DonatePage ,ConfirmationPage,AccountSettingsPage } from './pages';
 import IndexPage from './pages/IndexPage'
 import ReactStormpath, { Router, HomeRoute, LoginRoute, AuthenticatedRoute } from 'react-stormpath';
 import React from 'react';
@@ -11,6 +11,7 @@ export default (
       <LoginRoute path='/login' component={LoginPage} />
       <Route path='/register' component={RegistrationPage} />
       <Route path='/campaigns/:campaignId' component={PatientPage} />
+      <Route path='/backup/:campaignId' component={PatientPageBackUp} />
       <Route path='/new-campaign' component={PatientCampaignPage} />
       <Route path='/donate' component={DonatePage} />
       <Route path='/confirm' component={ConfirmationPage} />

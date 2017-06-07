@@ -14,10 +14,10 @@ import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import Modal from 'react-bootstrap/lib/Modal';
 import FileUpload from '../widgets/fileupload';
-import {SERVER_URL} from '../constants/Config';
+import { SERVER_URL } from '../constants/Config';
 
 
-class PatientPage extends React.Component {
+class PatientPageBackUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = { showModal: false, imagePreviewUrl: [], file: [] }
@@ -135,10 +135,10 @@ class PatientPage extends React.Component {
                         </form>
 
                     </div>
-                    <div className="col-md-3 col-xs-12">
+                    <div className="col-md-4 col-xs-12">
                         <Gallery images={images} />
                     </div>
-                    <div className="col-md-9 col-xs-12">
+                    <div className="col-md-8 col-xs-12">
                         <div className="comments-container">
                             <p>{campaign.description}</p>
                         </div>
@@ -177,4 +177,4 @@ function mapStateToProps(state) {
         campaign
     };
 }
-export default connect(mapStateToProps)(PatientPage);
+export default connect(mapStateToProps)(PatientPageBackUp);
