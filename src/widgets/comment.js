@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import moment from 'moment';
 export default class CommentView extends React.Component {
 
 
@@ -13,10 +13,10 @@ export default class CommentView extends React.Component {
                     <div>
                         <h4 className="media-heading text-uppercase reviews">Marco </h4>
                         <span className="media-date text-uppercase reviews list-inline">
-                            12 mins ago
+                           {moment(this.props.data.dateCommented).format("DD MMM YYYY")} 12 mins ago
                          </span>
                         <p className="media-comment">
-                            Great snippet! Thanks for sharing.
+                            {this.props.data.text}
                         </p>
                     </div>
                 </div>

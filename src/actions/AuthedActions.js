@@ -1,13 +1,9 @@
 import { arrayOf, normalize } from 'normalizr';
-import SC from 'soundcloud';
 import Cookies from 'js-cookie';
 import { navigateTo } from '../actions/NavigatorActions';
-import { changePlayingSong } from '../actions/PlayerActions';
-import { fetchSongs, receiveSongs } from '../actions/PlaylistsActions';
+
 import * as types from '../constants/ActionTypes';
 import { CLIENT_ID } from '../constants/Config';
-import { AUTHED_PLAYLIST_SUFFIX } from '../constants/PlaylistConstants';
-import { playlistSchema, songSchema, userSchema } from '../constants/Schemas';
 
 const COOKIE_PATH = 'accessToken';
 let streamInterval;
@@ -60,18 +56,30 @@ function initInterval(accessToken) {
   };
 }
 
-export function loginUser(shouldShowStream = true) {
+export function loginUser(loginData) {
+  console.log('login data',loginData)
   return dispatch => {
-    SC.initialize({
-      client_id: CLIENT_ID,
-      redirect_uri: `${window.location.protocol}//${window.location.host}/api/callback`,
-    });
 
-    SC.connect().then(authObj => {
-      Cookies.set(COOKIE_PATH, authObj.oauth_token);
-      dispatch(authUser(authObj.oauth_token, shouldShowStream));
-    })
-    .catch(err => { throw err; });
+    return fetch(`${API_URL}/users/login`, {
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+    
+      }),
+      method: 'post', body:`login=${loginData.email}&password=${loginData.password}`
+    }).then(response => response.json())
+      .then(json => {
+      
+      })
+  };
+
+  
+}
+
+export function registerUser(loginData) {
+  console.log('registration data',loginData)
+  return dispatch => {
+ 
   };
 }
 

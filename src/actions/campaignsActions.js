@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 import * as types from '../constants/ActionTypes';
 
 import { patientSchema } from '../constants/Schemas';
-import { constructCampaignUrl,constructCampaignCommentsUrl, constructPatientConditionsUrl, getCreateCampaignUrl ,constructCampaignMediasUrl } from '../utils/PatientUtils';
+import { constructCampaignUrl,constructfetchCampaignCommentsUrl,constructCampaignCommentsUrl, constructPatientConditionsUrl, getCreateCampaignUrl ,constructCampaignMediasUrl } from '../utils/PatientUtils';
 
 
 
@@ -52,13 +52,15 @@ export function uploadCampaignMedias(campaignId, data) {
 export function postCampaignComments(text,campaignId, userId,type) {
   return dispatch => {
     let formData = new FormData();
-    formData.append('text', data);
-    return fetch(constructCampaignCommentsUrl(campaignId,userId,type), {
+    formData.append('text', text);
+    formData.append('type', type);
+    return fetch(constructCampaignCommentsUrl(campaignId, "78",type), {
       headers: new Headers({
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'content-type': 'application/json'
     
       }),
-      method: 'post', body: formData
+      method: 'post', body: JSON.stringify({text})
     }).then(response => response.json())
       .then(json => {
         console.log("i will change route");
@@ -67,6 +69,22 @@ export function postCampaignComments(text,campaignId, userId,type) {
   }
 }
 
+
+export function fetchCampaignComments(campaignId) {
+  return dispatch => {
+   
+    return fetch(constructfetchCampaignCommentsUrl(campaignId),{
+      headers: new Headers({
+        'Accept': 'application/json'
+      })
+    })
+    .then(response => response.json())
+      .then(json => {
+        console.log(json);
+        dispatch({type:types.RECEIVE_COMMENTS,data:json})
+      })
+  }
+}
 
 
 export function fetchCampaigns(campaignId) {

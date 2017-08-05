@@ -4,6 +4,8 @@ import merge from 'lodash/merge';
 const initialState = {
   isFetching: false,
   campaign:{},
+  comments:[],
+  tips:[],
   campaigns: []
 };
 
@@ -27,7 +29,8 @@ export default function patientCampaigns(state = initialState, action) {
 
         return {...state, campaign: action.campaign ={}};
 
-
+case types.RECEIVE_COMMENTS:
+return {...state,comments: action.data.filter(data=> data.commentType =="COMMENT") ,tips: action.data.filter(data=> data.commentType =="TIP")}
     default:
       return state;
   }

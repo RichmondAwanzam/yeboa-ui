@@ -4,12 +4,15 @@ import renderComment from '../utils/forms/render-comment-input';
 import { Field, reduxForm } from 'redux-form';
 import { postCampaignComments } from '../actions/campaignsActions'
 class CreateComment extends Component {
-
+constructor(props){
+    super(props);
+}
 
     handleSubmit(data) {
         console.log(data);
-        console.log(this.props.dispatch);
+     
         const { dispatch, campaignId, userId } = this.props;
+          console.log(campaignId ,userId);
         dispatch(postCampaignComments(data.comment, campaignId, userId, this.props.type))
     }
     render() {

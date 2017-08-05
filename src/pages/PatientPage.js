@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import CommentView from '../widgets/comment';
 import Gallery from 'react-grid-gallery';
-import { fetchCampaigns, uploadCampaignMedias } from '../actions/campaignsActions';
+import { fetchCampaigns,fetchCampaignComments, uploadCampaignMedias } from '../actions/campaignsActions';
 import { connect } from 'react-redux';
 import CampaignHeaderCard from '../components/campaign-header-card';
 import CreateComment from '../components/create-comment';
@@ -37,6 +37,7 @@ class PatientPage extends React.Component {
 
         const { dispatch } = this.props;
         dispatch(fetchCampaigns(campaignId));
+        dispatch(fetchCampaignComments(campaignId));
 
     }
     uploadMediasToServer() {
@@ -148,8 +149,8 @@ class PatientPage extends React.Component {
                                 <div className="comments-container">
                                     <div className="text-content-area">
                                         Comments
-              <CommentsView />
-                                        <CreateComment />
+                                         <CommentsView  data={this.props.comments}/>
+                                        <CreateComment campaignId={this.props.params.campaignId} type="comment" />
                                     </div>
                                 </div>
                             </Tab>
@@ -158,8 +159,8 @@ class PatientPage extends React.Component {
                                 <div className="comments-container">
                                     <div className="text-content-area">
                                         Doctors Tips
-                  <CommentsView />
-                                        <CreateComment />
+                                        <CommentsView data={this.props.tips}/>
+                                        <CreateComment  campaignId={this.props.params.campaignId} type="tip" />
                                     </div>
                                 </div>
                             </Tab>
@@ -172,9 +173,10 @@ class PatientPage extends React.Component {
 }
 function mapStateToProps(state) {
     const { patientCampaigns } = state;
-    const { campaign } = patientCampaigns;
+    const { campaign ,tips,comments } = patientCampaigns;
+
     return {
-        campaign
+        campaign,tips,comments
     };
 }
 export default connect(mapStateToProps)(PatientPage);

@@ -34,9 +34,11 @@ export function constructCampaignMediasUrl(campaignId) {
 
 }
 export function constructCampaignCommentsUrl(campaignId,userId,type) {
-    return `${API_URL}comment/${campaignId}/${userId}?type=${type}&client_id=${CLIENT_ID}`;
+    return `${API_URL}campaign/${campaignId}/comment/${userId}?type=${type}&client_id=${CLIENT_ID}`;
 }
-
+export function constructfetchCampaignCommentsUrl(campaignId,userId,type) {
+    return `${API_URL}campaign/${campaignId}/comment?client_id=${CLIENT_ID}`;
+}
 
 export function getImageUrl(s, size = null) {
   let str = s;
