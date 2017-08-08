@@ -76,10 +76,40 @@ export function loginUser(loginData) {
   
 }
 
-export function registerUser(loginData) {
-  console.log('registration data',loginData)
+export function registerUser(registerData) {
+   console.log('login data',registerData)
   return dispatch => {
- 
+
+    return fetch(`${API_URL}/users/register`, {
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+      method: 'post', body:`name=${registerData.name}&email=${registerData.email}&password=${registerData.password}&msisdn=${registerData.msisdn}`
+    }).then((response) => {
+      console.log('token',response.headers);
+      return response.json()})
+      .then(json => {
+       console.log('response',json);
+      })
+  };
+}
+
+export function checkUserExistences(identifier , type) {
+  
+  return dispatch => {
+
+    return fetch(`${API_URL}/users/exist?identifier=${identifier}&type=${type}`, {
+      headers: new Headers({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }),
+      method: 'get'
+    }).then(response => response.json())
+      .then(json => {
+      console.log(json);
+      dispatch(receiveUserExists(json.exist))
+      })
   };
 }
 
@@ -131,3 +161,11 @@ function receiveAuthedUser(user) {
     user,
   };
 }
+
+function receiveUserExists(exists) {
+  return {
+    type: types.RECEIVE_USER_EXISTENCE,
+    exists,
+  };
+}
+

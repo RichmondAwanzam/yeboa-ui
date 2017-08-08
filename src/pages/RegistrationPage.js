@@ -3,14 +3,7 @@ import DocumentTitle from 'react-document-title';
 import { RegistrationForm } from 'react-stormpath';
 import RegisterComponent from '../components/register-component'
 export default class RegistrationPage extends React.Component {
-
-  
-     onSubmit(formData){
-    
-      const {dispatch} = this.props;
-   
-   
-   }
+ 
   render() {
     return (
       <DocumentTitle title={`Registration`}>
@@ -21,7 +14,7 @@ export default class RegistrationPage extends React.Component {
               <hr />
             </div>
           </div>
-          <RegisterComponent handleSubmit={this.onSubmit.bind(this)} />
+          <RegisterComponent />
         </div>
       </DocumentTitle>
     );

@@ -4,6 +4,7 @@ const initialState = {
   accessToken: null,
   likes: {},
   user: null,
+  userExists: false
 };
 
 export default function authed(state = initialState, action) {
@@ -32,6 +33,8 @@ export default function authed(state = initialState, action) {
           [action.songId]: action.liked,
         }),
       });
+      case types.RECEIVE_USER_EXISTENCE:
+      return Object.assign({},state,{userExists:action.exists});
 
     default:
       return state;
